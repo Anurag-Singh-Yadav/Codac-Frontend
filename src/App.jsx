@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className='pt-[13vh]'>
+      <div className='pt-[15vh]'>
       <Routes>
         <Route path="/" element={<FileUpload />} />
         <Route path="/login" element={<Login />} />

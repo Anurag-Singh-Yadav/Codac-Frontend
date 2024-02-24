@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className=" bg-[#eef5f8] flex justify-between items-center py-6 fixed top-0 w-full">
+    <div className=" bg-[#eef5f8] h-[12vh] flex justify-between items-center py-6 fixed top-0 w-full">
       <div>Logo</div>
       <div className="flex justify-center items-center gap-2">
         <div className="font-semibold">Don't have an account?</div>
