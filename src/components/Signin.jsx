@@ -29,11 +29,13 @@ function Signin() {
       if(token){
         Cookies.set('token',token);
         navigate('/');
+        window.location.reload();
       }
       else{
         throw new Error();
       }
     } catch(err){
+      console.log(err);
       alert(err.response.data?.message || 'Unknown error while signing-in');
     }
   };

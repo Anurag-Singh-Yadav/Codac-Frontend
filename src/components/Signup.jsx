@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import SigninWithGoogle from "./SigninWithGoogle";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
+
 
 function Signup() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,17 +26,19 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(formData.password !== formData.confirmPassword){
+      alert('Both passwords fields should be same');
+      return;
+    }
     try{
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_MANUAL_LOGIN}`,formData);
-      const {token} = res.data;
-      if(token){
-        Cookies.set('token',token);
-        navigate('/');
-      }
-      else{
-        throw new Error();
+      console.log("form data ",formData);
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_CREATE_USER}`,formData);
+      if(res.data?.success){
+        navigate('/login');
+      
       }
     } catch(err){
+      console.log("error",err);
       alert(err?.response.data?.message || 'Unknown error while signing-in');
     }
   };
