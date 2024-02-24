@@ -14,10 +14,6 @@ function Navbar() {
     const token = Cookies.get("token");
     try {
       console.log("token", token);
-      console.log(
-        "url ->",
-        `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_CHECK_LOGIN}`
-      );
       const res = await axios.get(
         `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_CHECK_LOGIN}`,
         {
@@ -29,7 +25,6 @@ function Navbar() {
           token: token,
         }
       );
-      console.log(res);
       setUserDetails(res.data);
     } catch (e) {
       console.log(e);
@@ -42,10 +37,11 @@ function Navbar() {
   }, []);
 
   return (
-    <div className=" bg-[#eef5f8] px-6 h-[12vh] flex justify-between items-center py-6 fixed top-0 w-full ">
-      <Link to={"/"}>
-        <img src="/codac.png" width={150}></img>
+    <div className=" bg-primary-bg px-6 h-[12vh] flex justify-between items-center py-6 fixed top-0 w-full ">
+      <Link to={"/"} className="flex justify-start items-center pb-10">
+        <img src="/codac.png" width={120}></img>
       </Link>
+
       {!userDetails && (
         <div className="flex justify-center items-center gap-2">
           <div
