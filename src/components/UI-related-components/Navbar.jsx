@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
@@ -43,7 +42,7 @@ function Navbar() {
   }, []);
 
   return (
-    <div className=" bg-[#eef5f8] px-6 h-[12vh] flex justify-between items-center -z-10 py-6 fixed top-0 w-full ">
+    <div className=" bg-[#eef5f8] px-6 h-[12vh] flex justify-between items-center py-6 fixed top-0 w-full ">
       <Link to={"/"}>
         <img src="/codac.png" width={150}></img>
       </Link>
@@ -81,7 +80,7 @@ function Navbar() {
             src={userDetails.avatar}
           ></Avatar>
           {open && (
-            <div className="-right-1 top-0  absolute transition-all  pt-[10vh]  duration-300 move-animation ">
+            <div className="-right-1 z-20 top-0  absolute transition-all pt-[10vh]  duration-300 move-animation ">
               <div className={`flex flex-col justify-evenly gap-2 py-2 px-4 text-sm border-t-[2px] border-t-[#8851d9] rounded-md w-fit text-[#8851d9] bg-primary-bg font-semibold`}>
                 {userDetails.name && <div>{userDetails.name}</div>}
                 {userDetails.email && <div>{userDetails.email}</div>}
