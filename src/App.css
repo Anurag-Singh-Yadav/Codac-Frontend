@@ -14,9 +14,9 @@
 .door {
   width: 300px;
   height: 500px;
-  background: linear-gradient(90deg, #8b4513 10%, #a0522d 50%, #8b4513 90%);
-  box-shadow: inset 0 0 10px #5a2d0c, 0 4px 6px rgba(0, 0, 0, 0.2);
-  border: 15px solid #654321;
+  background: linear-gradient(90deg, #612dae 10%, #9a67e8 50%, #612dae 90%);
+  box-shadow: inset 0 0 10px #2f0c63, 0 4px 6px rgba(0, 0, 0, 0.2);
+  border: 15px solid #8851d9;
   border-radius: 10px; /* Optional: if you want rounded corners */
 }
 
@@ -27,7 +27,7 @@
   top: 40%; /* Adjust to position the handle appropriately */
   width: 20px; /* Width of the handle */
   height: 40px; /* Height of the handle */
-  background: linear-gradient(#d4a960, #806c3d);
+  background: linear-gradient(#8955d6, #9a67e8);
   border-radius: 5px; /* Gives a rounded effect to the sides of the handle */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Optional: adds some depth */
 }
@@ -39,39 +39,37 @@
   top: 40%; /* Adjust to position the handle appropriately */
   width: 20px; /* Width of the handle */
   height: 40px; /* Height of the handle */
-  background: linear-gradient(#d4a960, #806c3d);
+  background: linear-gradient(#8955d6, #9a67e8);
   border-radius: 5px; /* Gives a rounded effect to the sides of the handle */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Optional: adds some depth */
 }
 
 .slide-right {
   transform: translateX(-100%);
-  animation: l-to-r 1s ease-in;
+  animation: l-to-r 1.5s ease-in;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .slide-left {
   transform: translateX(100%);
-  animation: r-to-l 1s ease-in;
+  animation: r-to-l 1.5s ease-in;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes l-to-r {
   0% {
-    opacity: 0;
     transform: translateX(-100%);
   }
   100% {
-    opacity: 1;
     transform: translateX(0%);
   }
 }
 
 @keyframes r-to-l {
   0% {
-    opacity: 0;
     transform: translateX(100%);
   }
   100% {
-    opacity: 1;
     transform: translateX(0%);
   }
 }

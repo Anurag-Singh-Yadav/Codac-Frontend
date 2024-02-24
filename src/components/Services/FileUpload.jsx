@@ -5,6 +5,8 @@ import { CiFileOn } from "react-icons/ci";
 import ProcessFiles from "./ProcessFiles";
 import Curtains from "../UI-related-components/Curtains";
 import { ImArrowDown } from "react-icons/im";
+import { LuDelete } from "react-icons/lu";
+import axios from "axios";
 
 const FileUpload = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -18,26 +20,44 @@ const FileUpload = () => {
 
   const [curtains, setCurtains] = useState(false);
 
+  const [data, setData] = useState(null);
+
   const submitHandler = async () => {
     setCurtains(true);
-    setTimeout(() => {
-      setProcessing(true);
-      setCurtains(false);
-    }, 1000);
+    const formData = new FormData();
+    uploadedFiles.forEach((file) => {
+      formData.append("file", file);
+    });
+
+    try {
+      setTimeout(async () => {
+        setProcessing(true);
+        setCurtains(false);
+      }, 1500);
+
+      const res = await axios.post(
+        `http://localhost:4000/codac/get-file-url`,
+          formData,
+      );
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+      setData("Error");
+    }
   };
 
   const [processing, setProcessing] = useState(false);
 
   return (
-    <div className=" bg-white rounded-2xl  ">
+    <div className=" rounded-2xl  flex justify-center">
       {!processing && (
-        <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[40vw] mx-auto">
-          <div className="flex flex-col justify-center items-center gap-4">
-            <p className="text-xl font-bold text-center">
+        <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[50vw] text-[#8851d9]">
+          <div className="flex flex-col justify-center items-center gap-4 w-full">
+            <p className="text-2xl w-full font-bold text-center ">
               Put your potentially malicious file into this window.
             </p>
             <div>
-              <ImArrowDown size={30}/>
+              <ImArrowDown size={30} />
             </div>
           </div>
           <div
@@ -48,8 +68,8 @@ const FileUpload = () => {
             <DoorEffect />
           </div>
           <ul>
-            {uploadedFiles.map((file) => (
-              <li key={file.name}>
+            {uploadedFiles.map((file, index) => (
+              <li key={index}>
                 <div className="flex gap-16  items-center">
                   <div className="relative">
                     <CiFileOn size={80} />
@@ -57,8 +77,16 @@ const FileUpload = () => {
                       {file.type}
                     </p>
                   </div>
-
                   <p className="font-semibold text-lg">{file.name}</p>
+                  <div
+                    onClick={() =>
+                      setUploadedFiles((prev) => {
+                        return prev.filter((f) => f.name !== file.name);
+                      })
+                    }
+                  >
+                    <LuDelete size={30} />
+                  </div>
                 </div>
               </li>
             ))}
@@ -86,6 +114,7 @@ const FileUpload = () => {
         <ProcessFiles
           uploadFiles={uploadedFiles}
           setProcessing={setProcessing}
+          data={data}
         />
       )}
       {curtains && <Curtains />}

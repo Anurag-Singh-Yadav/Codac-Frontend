@@ -19,8 +19,11 @@ const progressEvents = [
   },
 ];
 
-function ProcessFiles() {
+function ProcessFiles({data}) {
 
+  useEffect(() => {
+    console.log(data);
+  } , [data]);
 
   useEffect(() => {
     var canvas = document.getElementById("canvas");
@@ -175,7 +178,9 @@ function ProcessFiles() {
             progressEvents.map((obj , index) => {
               const {icon,event} = obj;
               return(
+
                 <div className="fixed  top-10 h-[100vh] w-[100vw] flex justify-center items-center content-center">
+
                   {
                     currentIndex === index && <div className="flex flex-col  text-white gap-3 bg-opacity-100 bg-white font-bold text-xl p-5 rounded-full w-72 h-72 items-center justify-center text-center bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-700  via-pink-700  to-blue-700 shadow-inner shadow-slate-950">
                       <ReactIcon icon={icon} className="w-16 h-16"/>
