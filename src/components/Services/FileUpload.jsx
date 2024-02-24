@@ -40,6 +40,8 @@ const FileUpload = () => {
           formData,
       );
       setData(res.data);
+      console.log(res.data);
+      
     } catch (err) {
       console.log(err);
       setData("Error");
@@ -53,8 +55,9 @@ const FileUpload = () => {
       {!processing && (
         <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[50vw] text-[#8851d9]">
           <div className="flex flex-col justify-center items-center gap-4 w-full">
-            <p className="text-2xl w-full font-bold text-center ">
-              Put your potentially malicious file into this window.
+            <p className="text-2xl
+             font-mono w-full font-bold text-center ">
+              Drop your potentially malicious file into this Container 
             </p>
             <div>
               <ImArrowDown size={30} />
@@ -97,9 +100,9 @@ const FileUpload = () => {
           {uploadedFiles.length > 0 && (
             <button
               onClick={submitHandler}
-              className="font-semibold bg-black text-white px-7 py-2 rounded-full border-[1.5px] border-black hover:text-black hover:bg-white transition duration-300"
+              className="font-semibold bg-white text-[#[#8851d9]] px-7 py-2 rounded-full border-[1.5px] border-[#8851d9] hover:text-white hover:bg-[#8851d9] transition duration-300"
             >
-              Launch
+              Upload
             </button>
           )}
           {uploadedFiles.length === 0 && (
