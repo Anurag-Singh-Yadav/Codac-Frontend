@@ -36,7 +36,7 @@ const FileUpload = () => {
       }, 1500);
 
       const res = await axios.post(
-        `http://localhost:4000/codac/get-file-url`,
+        `http://localhost:4001/codac/get-file-url`,
           formData,
       );
       setData(res.data);
