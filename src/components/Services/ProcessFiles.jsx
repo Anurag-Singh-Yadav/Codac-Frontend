@@ -19,11 +19,14 @@ const progressEvents = [
   },
 ];
 
-function ProcessFiles({data}) {
+function ProcessFiles({ data }) {
+  const [report, setReport] = useState(null);
 
   useEffect(() => {
-    console.log(data);
-  } , [data]);
+    if (data?.clamAVScan) {
+      setReport(reportParser(data.clamAVScan));
+    }
+  }, [data]);
 
   useEffect(() => {
     var canvas = document.getElementById("canvas");
@@ -164,8 +167,15 @@ function ProcessFiles({data}) {
       setCurrentIndex((prev) => (prev + 1) % progressEvents.length);
     }, 5000);
     return () => clearInterval(interval);
-  } , [])
+  }, []);
 
+  const reportParser = (report) => {
+    if (!report) {
+      throw new Error("No report found");
+    }
+    const reportData = report.split("\r\n");
+    console.log(reportData);
+  };
 
   return (
     <div className="relative h-[88vh] w-full">
@@ -174,32 +184,33 @@ function ProcessFiles({data}) {
       </canvas>
       <div>
 
-          {
-            progressEvents.map((obj , index) => {
-              const {icon,event} = obj;
-              return(
-
-                <div className="fixed  top-10 h-[100vh] w-[100vw] flex justify-center items-center content-center">
-
-                  {
-                    currentIndex === index && <div className="flex flex-col  text-white gap-3 bg-opacity-100 bg-white font-bold text-xl p-5 rounded-full w-72 h-72 items-center justify-center text-center bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-700  via-pink-700  to-blue-700 shadow-inner shadow-slate-950">
-                      <ReactIcon icon={icon} className="w-16 h-16"/>
-                      <p className="justify-center content-center">{event}</p>
-                    </div>
-                  }
-                </div>
-              )
-            })
-          }
-
+        {!report &&
+          progressEvents.map((obj, index) => {
+            const { icon, event } = obj;
+            return (
+              <div className="fixed  top-10 h-[100vh] w-[100vw] flex justify-center items-center content-center">
+                {currentIndex === index && (
+                  <div className="flex flex-col  text-white gap-3 bg-opacity-100 bg-white font-bold text-xl p-5 rounded-full w-72 h-72 items-center justify-center text-center bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-700  via-pink-700  to-blue-700 shadow-inner shadow-slate-950">
+                    <ReactIcon icon={icon} className="w-16 h-16" />
+                    <p className="justify-center content-center">{event}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        {report && (
+          <div>
+            <GenerateReport report={report} />
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-const ReactIcon = ({icon})=>{
+const ReactIcon = ({ icon }) => {
   const Component = icon;
-  return <Component/>
-}
+  return <Component />;
+};
 
 export default ProcessFiles;

@@ -53,7 +53,7 @@ function Signin() {
         >
           Log In
         </button>
-        <div className="">
+        <div className=" w-full">
           <SigninWithGoogle  />
         </div>
       </form>
