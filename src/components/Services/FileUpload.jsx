@@ -49,8 +49,8 @@ const FileUpload = () => {
   const [processing, setProcessing] = useState(false);
 
   return (
-    <div className=" rounded-2xl  flex justify-center">
-      {!processing && (
+    <div className=" rounded-2xl  flex justify-center bg-primary-bg min-h-[100vh]">
+      {!processing && (    
         <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[50vw] text-[#8851d9]">
           <div className="flex flex-col justify-center items-center gap-4 w-full">
             <p className="text-2xl w-full font-bold text-center ">
@@ -62,7 +62,7 @@ const FileUpload = () => {
           </div>
           <div
             {...getRootProps()}
-            className=" rounded-3xl bg-white h-[40vh] drop-box-container focus:outline-none transition duration-300 ease-in-out cursor-pointer"
+            className=" rounded-3xl  h-[40vh] drop-box-container focus:outline-none transition duration-300 ease-in-out cursor-pointer"
           >
             <input {...getInputProps()} />
             <DoorEffect />
