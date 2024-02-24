@@ -1,9 +1,9 @@
 import React from 'react'
-
+import './style.css'
 function GenerateReport({report}) {
     console.log('Reppp' , report);
   return (
-    <div className='bg-gradient-to-r from-purple-700 to-blue-500 px-6 py-4 rounded-lg border-4 '>
+    <div className=' card '>
       <div className='text-center pb-3 font-bold text-2xl text-white'>Scan Report </div>
         {
           report &&
@@ -21,8 +21,8 @@ function GenerateReport({report}) {
               .map((line, i) => {
                 return (
                   <p
-                    className={`font-medium text-xl text-white ${
-                      line.startsWith('Infected files') ? 'bg-emerald-300 p-2 rounded-md text-black' : 'p-2'
+                    className={`font-medium text-lg ${
+                      line.startsWith('Infected files') ? 'bg-emerald-500 p-2 rounded-md text-black' : 'p-2 text-white'
                     }`}
                     key={i}
                   >
