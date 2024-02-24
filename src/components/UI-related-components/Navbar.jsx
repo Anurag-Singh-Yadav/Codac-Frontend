@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import Avatar from "react-avatar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 
 function Navbar() {
@@ -44,13 +44,11 @@ function Navbar() {
 
   return (
     <div className=" bg-[#eef5f8] px-6 h-[12vh] flex justify-between items-center z-10 py-6 fixed top-0 w-full">
-      <div
-        onClick={() => {
-          navigate("/");
-        }}
+      <Link
+        to={'/'}
       >
         <img src="/codac.png" width={150}></img>
-      </div>
+      </Link>
       {!userDetails && (
         <div className="flex justify-center items-center gap-2">
           <div
