@@ -3,7 +3,7 @@ import { vec3 } from "gl-matrix";
 import { LuUpload } from "react-icons/lu";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaVirusCovid } from "react-icons/fa6";
-
+import GenerateReport from "../UI-related-components/GenerateReport";
 const progressEvents = [
   {
     event: "Uploading files",
@@ -175,6 +175,7 @@ function ProcessFiles({ data }) {
     }
     const reportData = report.split("\r\n");
     console.log(reportData);
+    return reportData;
   };
 
   return (
@@ -199,7 +200,7 @@ function ProcessFiles({ data }) {
             );
           })}
         {report && (
-          <div>
+          <div className="fixed  top-10 h-[100vh] w-[100vw] flex justify-center items-center content-center">
             <GenerateReport report={report} />
           </div>
         )}
