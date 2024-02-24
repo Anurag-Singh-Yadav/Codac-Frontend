@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import SigninWithGoogle from "./SigninWithGoogle";
-
+import axios from "axios";
+import Cookies from 'js-cookie';
+import { useNavigate } from "react-router";
 function Signup() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -36,9 +39,9 @@ function Signup() {
 
   return (
     <div className="bg-[url('/wave.svg')] min-h-[88vh] px-8">
-      <div className="px-[30%] pt-10">
-        <div className="bg-white py-6 px-16 rounded-md">
-          <div className="font-bold text-3xl text-center my-2">
+      <div className="xl:px-[30%] lg:px-[25%] md:px-[20%] sm:px-[15%] pt-10">
+        <div className="bg-white py-6 px-4 sm:px-16 rounded-md">
+          <div className="font-bold text-center text-xl sm:text-3xl mt-2 mb-4">
             Create Account
           </div>
           <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
@@ -57,7 +60,7 @@ function Signup() {
               </div>
               <div className="text-xs font-semibold">Email</div>
               <input
-                req
+                required
                 type="email"
                 name="email"
                 placeholder="Enter your Email"
@@ -69,7 +72,7 @@ function Signup() {
             <div className="flex flex-col gap-1">
               <div className="text-xs font-semibold">Password</div>
               <input
-                req
+                required
                 type="password"
                 name="password"
                 placeholder="Enter your password"
@@ -82,7 +85,7 @@ function Signup() {
             <div className="flex flex-col gap-1">
               <div className="text-xs font-semibold">Confirm Password</div>
               <input
-                req
+                required
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm password"
