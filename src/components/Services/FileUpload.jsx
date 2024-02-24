@@ -23,13 +23,13 @@ const FileUpload = () => {
     setTimeout(() => {
       setProcessing(true);
       setCurtains(false);
-    }, 1000);
+    }, 1500);
   };
 
   const [processing, setProcessing] = useState(false);
 
   return (
-    <div className=" bg-white rounded-2xl  ">
+    <div className=" rounded-2xl  ">
       {!processing && (
         <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[40vw] mx-auto">
           <div className="flex flex-col justify-center items-center gap-4">
@@ -37,7 +37,7 @@ const FileUpload = () => {
               Put your potentially malicious file into this window.
             </p>
             <div>
-              <ImArrowDown size={30}/>
+              <ImArrowDown size={30} />
             </div>
           </div>
           <div

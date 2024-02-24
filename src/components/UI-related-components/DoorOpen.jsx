@@ -19,7 +19,7 @@ const DoorEffect = () => {
     <div className="flex items-center justify-center h-full ">
       <div
         ref={ref}
-        className="relative w-[80vw] md:w-[60vw] lg:w-[50vw] h-full flex justify-center items-center bg-white hover:cursor-pointer parent "
+        className="relative bg-primary-bg w-[80vw] md:w-[60vw] lg:w-[50vw] h-full flex justify-center items-center hover:cursor-pointer parent "
         onMouseEnter={() => setFlag(true)}
         onMouseLeave={() => setFlag(false)}
         onDragEnter={() => setFlag(true)}

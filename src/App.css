@@ -46,32 +46,30 @@
 
 .slide-right {
   transform: translateX(-100%);
-  animation: l-to-r 1s ease-in;
+  animation: l-to-r 1.5s ease-in;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .slide-left {
   transform: translateX(100%);
-  animation: r-to-l 1s ease-in;
+  animation: r-to-l 1.5s ease-in;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes l-to-r {
   0% {
-    opacity: 0;
     transform: translateX(-100%);
   }
   100% {
-    opacity: 1;
     transform: translateX(0%);
   }
 }
 
 @keyframes r-to-l {
   0% {
-    opacity: 0;
     transform: translateX(100%);
   }
   100% {
-    opacity: 1;
     transform: translateX(0%);
   }
 }
