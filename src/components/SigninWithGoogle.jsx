@@ -3,8 +3,10 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Cookies from "js-cookie";
+import {useNavigate} from 'react-router-dom';
 
 function SigninWithGoogle() {
+  const navigate = useNavigate();
     const ref = useRef();
   const successHandler = async (credentialResponse) => {
     try {
@@ -22,6 +24,8 @@ function SigninWithGoogle() {
       console.log("Server Response", responseFromServer.data);
       const token = responseFromServer.data.token;
       Cookies.set('token', token, { expires: 7 });
+      navigate('/');
+      window.location.reload();
     } catch (error) {
       console.log("Error:", error);
     }

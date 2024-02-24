@@ -173,7 +173,7 @@ function ProcessFiles({ data }) {
     if (!report) {
       throw new Error("No report found");
     }
-    const reportData = report.split("\r\n");
+    const reportData = report.split("\n");
     console.log(reportData);
     return reportData;
   };
