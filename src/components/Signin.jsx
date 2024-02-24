@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import SigninWithGoogle from "./SigninWithGoogle";
+import axios from "axios";
+import {useNavigate} from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Signin() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -15,10 +21,21 @@ function Signin() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend = new FormData();
-    console.log("Form Data:", formDataToSend);
+    try{
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_MANUAL_LOGIN}`,formData);
+      const {token} = res.data;
+      if(token){
+        Cookies.set('token',token);
+        navigate('/');
+      }
+      else{
+        throw new Error();
+      }
+    } catch(err){
+      alert(err.response.data?.message || 'Unknown error while signing-in');
+    }
   };
 
   return (

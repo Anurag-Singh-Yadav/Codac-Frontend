@@ -84,6 +84,7 @@ const FileUpload = () => {
                         return prev.filter((f) => f.name !== file.name);
                       })
                     }
+                    className="cursor-pointer"
                   >
                     <LuDelete size={30} />
                   </div>
