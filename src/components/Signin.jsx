@@ -1,15 +1,7 @@
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
+import SigninWithGoogle from "./SigninWithGoogle";
+
 function Signin() {
-  const sucessHandler = async(credentialResponse)=>{
-    console.log("decode ->",jwtDecode(credentialResponse.credential));
-  }
-
-  const errorHandler = async(e)=>{
-    console.log("Login Failed",e);
-  }
-
   return (
     <div className="bg-white py-6 px-16">
       <div className="font-bold text-3xl text-center">Welcome Back!</div>
@@ -34,15 +26,9 @@ function Signin() {
           Log In
         </div>
 
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            sucessHandler(credentialResponse);
-          }}
-          onError={(e) => {
-            errorHandler(e);
-          }}
-          scope="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
-        />
+        <div>
+          <SigninWithGoogle />
+        </div>
       </form>
     </div>
   );

@@ -1,12 +1,20 @@
 import './App.css'
-import Login1 from './components/Login1'
-import FileUpload from './components/Services/FileUpload'
 import Login from './components/Login'
+import FileUpload from './components/Services/FileUpload'
+import {Routes , Route} from 'react-router-dom'
+import Navbar from './components/UI-related-components/Navbar'
+
 function App() {
   return (
-    <>
-    <Login1></Login1>
-    </>
+    <div>
+      <Navbar />
+      <div className='pt-[13vh]'>
+      <Routes>
+        <Route path="/" element={<FileUpload />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      </div>
+    </div>
   )
 }
 

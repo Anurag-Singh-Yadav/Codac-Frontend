@@ -25,7 +25,7 @@ const DoorEffect = () => {
         onDragEnter={() => setFlag(true)}
         onDrop={() => setFlag(false)}
       >
-        <div className="bg-gray-300 rounded-2xl p-3">
+        <div className="rounded-2xl p-3">
           <div className="text-blue-400"><FaCloudUploadAlt size={70} /></div>
           <p className="font-semibold">Drop Here</p>
         </div>
