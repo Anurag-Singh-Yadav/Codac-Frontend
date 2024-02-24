@@ -1,10 +1,11 @@
-import React from "react";
+import React , {useEffect , useRef , useState}from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 function SigninWithGoogle() {
+    const ref = useRef();
   const successHandler = async (credentialResponse) => {
     try {
       const response = jwtDecode(credentialResponse.credential);
@@ -30,12 +31,22 @@ function SigninWithGoogle() {
     console.log("Login Failed", error);
   };
 
+  const [wid , setWid] = useState('50');
+
+  useEffect(() => {
+    if (ref.current) {
+        setWid(ref.current.offsetWidth.toString());
+    }
+},[]);
+
   return (
-    <div className="w-full  items-center justify-center flex">
+    <div className="flex justify-center" ref={ref}>
       <GoogleLogin 
         onSuccess={(credentialResponse) => successHandler(credentialResponse)}
         onError={(error) => errorHandler(error)}
         scope="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
+        width={wid}
+        size="large"
       />
     </div>
   );
