@@ -31,8 +31,8 @@ function SigninWithGoogle() {
   };
 
   return (
-    <div>
-      <GoogleLogin
+    <div className="w-full  items-center justify-center flex">
+      <GoogleLogin 
         onSuccess={(credentialResponse) => successHandler(credentialResponse)}
         onError={(error) => errorHandler(error)}
         scope="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"

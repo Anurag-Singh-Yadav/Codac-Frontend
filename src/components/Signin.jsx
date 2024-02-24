@@ -22,39 +22,39 @@ function Signin() {
   };
 
   return (
-    <div className="bg-white py-6 px-16">
+    <div className="bg-white py-6 px-16 rounded-md">
       <div className="font-bold text-3xl text-center">Welcome Back!</div>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-1">
-          <div className="text-xs">Email</div>
+        <div className="flex flex-col gap-1 w-full">
+          <div className="text-xs font-semibold">Email</div>
           <input
             type="email"
             name="email"
             placeholder="Enter your Email"
-            className="border-2 px-2 py-1"
+            className="border-2 px-2 py-1 rounded-md"
             value={formData.email}
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex flex-col gap-1">
-          <div className="text-xs">Password</div>
+        <div className="flex flex-col gap-1 w-full">
+          <div className="text-xs font-semibold">Password</div>
           <input
             type="password"
             name="password"
             placeholder="Enter your password"
-            className="border-2 px-2 py-1"
+            className="border-2 px-2 py-1  rounded-md"
             value={formData.password}
             onChange={handleChange}
           ></input>
         </div>
         <button
           type="submit"
-          className="bg-[#8851d9] py-2 text-white text-center font-bold cursor-pointer"
+          className="bg-[#8851d9] py-2 text-white text-center font-bold cursor-pointer rounded-md"
         >
           Log In
         </button>
-        <div>
-          <SigninWithGoogle />
+        <div className="">
+          <SigninWithGoogle  />
         </div>
       </form>
     </div>
