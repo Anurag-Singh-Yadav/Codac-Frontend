@@ -8,7 +8,11 @@ export default {
     extend: {
       backgroundImage:  {
         'wave': "url('/wave.svg')",
+      },
+      colors:{
+        'primary-bg': '#eef5f8',
       }
+
     },
   },
   plugins: [],
