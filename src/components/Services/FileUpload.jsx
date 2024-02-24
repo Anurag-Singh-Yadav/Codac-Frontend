@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import DoorEffect from "../UI-related-components/DoorOpen";
 import { CiFileOn } from "react-icons/ci";
@@ -7,9 +7,13 @@ import Curtains from "../UI-related-components/Curtains";
 import { ImArrowDown } from "react-icons/im";
 import { LuDelete } from "react-icons/lu";
 import axios from "axios";
-
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 const FileUpload = () => {
+  const navigate = useNavigate();
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [curtains, setCurtains] = useState(false);
+  const [data, setData] = useState(null);
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: (acceptedFiles) => {
       setUploadedFiles((prev) => {
@@ -17,11 +21,33 @@ const FileUpload = () => {
       });
     },
   });
-
-  const [curtains, setCurtains] = useState(false);
-
-  const [data, setData] = useState(null);
-
+  const checkLogin = async () => {
+    const token = Cookies.get("token");
+    try {
+      console.log("token", token);
+      console.log(
+        "url ->",
+        `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_CHECK_LOGIN}`
+      );
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_CHECK_LOGIN}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        {
+          token: token,
+        }
+      );
+    } catch (e) {
+      console.log(e);
+      navigate("/login");
+    }
+  };
+  useEffect(()=>{
+    checkLogin();
+  })
   const submitHandler = async () => {
     setCurtains(true);
     const formData = new FormData();
@@ -51,7 +77,7 @@ const FileUpload = () => {
   const [processing, setProcessing] = useState(false);
 
   return (
-    <div className=" rounded-2xl  flex justify-center">
+    <div className=" rounded-2xl flex justify-center">
       {!processing && (
         <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[50vw] text-[#8851d9]">
           <div className="flex flex-col justify-center items-center gap-4 w-full">
