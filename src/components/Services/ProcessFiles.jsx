@@ -14,7 +14,7 @@ const progressEvents = [
     icon: FaMagnifyingGlass,
   },
   {
-    event: "Problems found, running in containerized environment",
+    event: "Running in containerized environment",
     icon: FaVirusCovid,
   },
 ];
@@ -168,21 +168,23 @@ function ProcessFiles({data}) {
 
 
   return (
-    <div className="relative h-[100vh] w-full">
-      <canvas id="canvas" className="absolute w-full">
+    <div className="relative h-[88vh] w-full">
+      <canvas id="canvas" className="absolute w-full ">
         <p className="text-white font-bold">Hello</p>
       </canvas>
       <div>
 
           {
             progressEvents.map((obj , index) => {
-              const {icon , event} = obj;
+              const {icon,event} = obj;
               return(
-                <div key={index} className="fixed z-10 top-0 h-[100vh] w-[100vw] flex justify-center items-center">
+
+                <div className="fixed  top-10 h-[100vh] w-[100vw] flex justify-center items-center content-center">
+
                   {
-                    currentIndex === index && <div className="flex gap-3 items-center bg-white">
-                      <ReactIcon icon={icon}/>
-                      <p>{event}</p>
+                    currentIndex === index && <div className="flex flex-col  text-white gap-3 bg-opacity-100 bg-white font-bold text-xl p-5 rounded-full w-72 h-72 items-center justify-center text-center bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-800  via-pink-800  to-blue-800 shadow-inner shadow-slate-950">
+                      <ReactIcon icon={icon} className="w-16 h-16"/>
+                      <p className="justify-center content-center">{event}</p>
                     </div>
                   }
                 </div>
