@@ -183,6 +183,7 @@ function ProcessFiles({ data }) {
         <p className="text-white font-bold">Hello</p>
       </canvas>
       <div>
+
         {!report &&
           progressEvents.map((obj, index) => {
             const { icon, event } = obj;
