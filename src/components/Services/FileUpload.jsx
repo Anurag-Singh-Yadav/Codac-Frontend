@@ -5,6 +5,8 @@ import { CiFileOn } from "react-icons/ci";
 import ProcessFiles from "./ProcessFiles";
 import Curtains from "../UI-related-components/Curtains";
 import { ImArrowDown } from "react-icons/im";
+import { LuDelete } from "react-icons/lu";
+import axios from "axios";
 
 const FileUpload = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -18,12 +20,30 @@ const FileUpload = () => {
 
   const [curtains, setCurtains] = useState(false);
 
+  const [data, setData] = useState(null);
+
   const submitHandler = async () => {
     setCurtains(true);
-    setTimeout(() => {
-      setProcessing(true);
-      setCurtains(false);
-    }, 1500);
+    const formData = new FormData();
+    uploadedFiles.forEach((file) => {
+      formData.append("file", file);
+    });
+
+    try {
+      setTimeout(async () => {
+        setProcessing(true);
+        setCurtains(false);
+      }, 1500);
+
+      const res = await axios.post(
+        `http://localhost:4000/codac/get-file-url`,
+          formData,
+      );
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+      setData("Error");
+    }
   };
 
   const [processing, setProcessing] = useState(false);
@@ -48,8 +68,8 @@ const FileUpload = () => {
             <DoorEffect />
           </div>
           <ul>
-            {uploadedFiles.map((file) => (
-              <li key={file.name}>
+            {uploadedFiles.map((file, index) => (
+              <li key={index}>
                 <div className="flex gap-16  items-center">
                   <div className="relative">
                     <CiFileOn size={80} />
@@ -57,8 +77,16 @@ const FileUpload = () => {
                       {file.type}
                     </p>
                   </div>
-
                   <p className="font-semibold text-lg">{file.name}</p>
+                  <div
+                    onClick={() =>
+                      setUploadedFiles((prev) => {
+                        return prev.filter((f) => f.name !== file.name);
+                      })
+                    }
+                  >
+                    <LuDelete size={30} />
+                  </div>
                 </div>
               </li>
             ))}
@@ -86,6 +114,7 @@ const FileUpload = () => {
         <ProcessFiles
           uploadFiles={uploadedFiles}
           setProcessing={setProcessing}
+          data={data}
         />
       )}
       {curtains && <Curtains />}
