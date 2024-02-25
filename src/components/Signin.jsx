@@ -41,8 +41,8 @@ function Signin() {
   };
 
   return (
-    <div className="bg-white py-6 px-16 rounded-md">
-      <div className="font-bold text-3xl text-center">Welcome Back!</div>
+    <div className="bg-white py-6 px-4 sm:px-16 rounded-md">
+      <div className="font-bold text-xl sm:text-3xl text-center mb-4">Welcome Back!</div>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-1 w-full">
           <div className="text-xs font-semibold">Email</div>
