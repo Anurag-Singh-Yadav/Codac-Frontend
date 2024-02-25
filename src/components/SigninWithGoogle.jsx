@@ -33,6 +33,7 @@ function SigninWithGoogle() {
 
   const errorHandler = (error) => {
     console.log("Login Failed", error);
+    navigate('/');
   };
 
   const [wid , setWid] = useState('50');
