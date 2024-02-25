@@ -49,8 +49,8 @@ function SigninWithGoogle() {
         onSuccess={(credentialResponse) => successHandler(credentialResponse)}
         onError={(error) => errorHandler(error)}
         scope="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
-        width={wid}
-        size="large"
+        size="medium"
+        shape="pill"
       />
     </div>
   );
