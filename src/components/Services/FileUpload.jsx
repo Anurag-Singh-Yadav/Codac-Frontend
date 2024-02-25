@@ -91,7 +91,7 @@ const FileUpload = () => {
           </div>
           <div
             {...getRootProps()}
-            className=" rounded-3xl bg-white h-[40vh] drop-box-container focus:outline-none transition duration-300 ease-in-out cursor-pointer"
+            className=" rounded-3xl  h-[40vh] drop-box-container focus:outline-none transition duration-300 ease-in-out cursor-pointer"
           >
             <input {...getInputProps()} />
             <DoorEffect />

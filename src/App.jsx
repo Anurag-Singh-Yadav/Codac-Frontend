@@ -8,7 +8,7 @@ import Signup from './components/Signup'
 
 function App() {
   return (
-    <div>
+    <div className=''>
       <Navbar />
       <div className='pt-[12vh]'>
       <Routes>
