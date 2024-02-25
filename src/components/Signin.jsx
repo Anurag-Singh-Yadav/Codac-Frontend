@@ -29,6 +29,7 @@ function Signin() {
       if(token){
         Cookies.set('token',token);
         navigate('/');
+        window.location.reload();
       }
       else{
         throw new Error();

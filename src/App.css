@@ -1,81 +1,58 @@
+.parent .door-left{
+  transition: transform 1s;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(116,29,253,1) 50%, rgba(90,69,252,1) 100%);
+   backdrop-filter: blur(1px);
 
-.parent {
-  perspective: 1000px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  /* border: 1px solid rgba(43, 43, 43, 0.568); */
 }
 
-.door-left {
-  transform: rotate3d(0, 1, 0, 60deg);
+.parent .door-right{
+  transition: transform 1s;
+  background: rgb(90,69,252);
+  background: linear-gradient(90deg, rgba(90,69,252,1) 0%, rgba(116,29,253,1) 50%, rgba(131,58,180,1) 100%);
+  backdrop-filter: blur(10px);
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  /* border: 1px solid rgba(43, 43, 43, 0.568); */
 }
 
-.door-right {
-  transform: rotate3d(0, 1, 0, -60deg);
-}
 
-.door {
-  width: 300px;
-  height: 500px;
-  background: linear-gradient(90deg, #612dae 10%, #9a67e8 50%, #612dae 90%);
-  box-shadow: inset 0 0 10px #2f0c63, 0 4px 6px rgba(0, 0, 0, 0.2);
-  border: 15px solid #8851d9;
-  border-radius: 10px; /* Optional: if you want rounded corners */
-}
-
-.door-0::after {
-  content: "";
-  position: absolute;
-  right: 30px; /* Adjust based on your preference */
-  top: 40%; /* Adjust to position the handle appropriately */
-  width: 20px; /* Width of the handle */
-  height: 40px; /* Height of the handle */
-  background: linear-gradient(#8955d6, #9a67e8);
-  border-radius: 5px; /* Gives a rounded effect to the sides of the handle */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Optional: adds some depth */
-}
-
-.door-1::after {
-  content: "";
-  position: absolute;
-  left: 30px; /* Adjust based on your preference */
-  top: 40%; /* Adjust to position the handle appropriately */
-  width: 20px; /* Width of the handle */
-  height: 40px; /* Height of the handle */
-  background: linear-gradient(#8955d6, #9a67e8);
-  border-radius: 5px; /* Gives a rounded effect to the sides of the handle */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Optional: adds some depth */
-}
-
-.slide-right {
+.parent:hover .door-left {
   transform: translateX(-100%);
-  animation: l-to-r 1.5s ease-in;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.slide-left {
+.parent:hover .door-right {
   transform: translateX(100%);
-  animation: r-to-l 1.5s ease-in;
-  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes l-to-r {
+.parent .door-left {
+  transform: translateX(0);
+}
+
+.parent .door-right {
+  transform: translateX(0);
+}
+
+@keyframes slide-left {
   0% {
+    transform: translateX(0);
+  }
+  100% {
     transform: translateX(-100%);
   }
-  100% {
-    transform: translateX(0%);
-  }
 }
 
-@keyframes r-to-l {
+@keyframes slide-right {
   0% {
+    transform: translateX(0);
+  }
+  100% {
     transform: translateX(100%);
   }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-canvas {
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
