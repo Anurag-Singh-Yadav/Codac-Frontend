@@ -79,7 +79,7 @@ const FileUpload = () => {
   return (
     <div className=" rounded-2xl flex justify-center">
       {!processing && (
-        <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[50vw] text-[#8851d9]">
+        <div className="flex flex-col items-center p-4 md:p-7 gap-7 w-[90vw] md:w-[50vw] lg:w-[50vw] text-indigo-600">
           <div className="flex flex-col justify-center items-center gap-4 w-full">
             <p className="text-2xl
              font-mono w-full font-bold text-center ">

@@ -180,7 +180,7 @@ function ProcessFiles({ data }) {
 
   return (
     <div className="absolute top-0 left-0 h-[100vh] w-full ">
-      <canvas id="canvas" className="absolute w-full ">
+      <canvas id="canvas" className="absolute w-full  h-[100vh]">
         <p className="text-white font-bold">Hello</p>
       </canvas>
       <div>
