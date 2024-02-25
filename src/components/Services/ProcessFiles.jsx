@@ -4,6 +4,7 @@ import { LuUpload } from "react-icons/lu";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaVirusCovid } from "react-icons/fa6";
 import GenerateReport from "../UI-related-components/GenerateReport";
+import { Link } from "react-router-dom";
 const progressEvents = [
   {
     event: "Uploading files",
@@ -19,7 +20,7 @@ const progressEvents = [
   },
 ];
 
-function ProcessFiles({ data }) {
+function ProcessFiles({ data , preview }) {
   const [report, setReport] = useState(null);
 
   useEffect(() => {
@@ -204,6 +205,9 @@ function ProcessFiles({ data }) {
             <GenerateReport report={report} />
           </div>
         )}
+        {report &&
+          preview && <Link to={'/preview'} className="fixed bottom-0 right-0 p-4 bg-white text-black font-bold rounded-tl-3xl">See Preview</Link>
+        }
       </div>
     </div>
   );

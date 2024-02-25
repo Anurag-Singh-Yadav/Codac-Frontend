@@ -9,7 +9,8 @@ import { LuDelete } from "react-icons/lu";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-const FileUpload = () => {
+
+const FileUpload = ({preview , setPreview}) => {
   const navigate = useNavigate();
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [curtains, setCurtains] = useState(false);
@@ -65,12 +66,11 @@ const FileUpload = () => {
         `http://localhost:4001/codac/get-file-url`,
           formData,
       );
+      console.log('************' , res.data);
       setData(res.data);
-      console.log(res.data);
-      
+      setPreview(res?.data?.preview);
     } catch (err) {
       console.log(err);
-      setData("Error");
     }
   };
 
@@ -145,6 +145,7 @@ const FileUpload = () => {
           uploadFiles={uploadedFiles}
           setProcessing={setProcessing}
           data={data}
+          preview={preview}
         />
       )}
       {curtains && <Curtains />}
