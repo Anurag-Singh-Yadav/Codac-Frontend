@@ -1,13 +1,8 @@
-.parent .door-left {
+.parent .door-left{
   transition: transform 1s;
-  background: rgb(131, 58, 180);
-  background: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(116, 29, 253, 1) 50%,
-    rgba(90, 69, 252, 1) 100%
-  );
-  backdrop-filter: blur(1px);
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(116,29,253,1) 50%, rgba(90,69,252,1) 100%);
+   backdrop-filter: blur(1px);
 
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -15,8 +10,10 @@
   /* border: 1px solid rgba(43, 43, 43, 0.568); */
 }
 
-.parent .door-right {
+.parent .door-right{
   transition: transform 1s;
+  background: rgb(90,69,252);
+  background: linear-gradient(90deg, rgba(90,69,252,1) 0%, rgba(116,29,253,1) 50%, rgba(131,58,180,1) 100%);
   backdrop-filter: blur(10px);
 
   border-top-right-radius: 5px;
@@ -25,14 +22,6 @@
   /* border: 1px solid rgba(43, 43, 43, 0.568); */
 }
 
-.door {
-  background: linear-gradient(
-    90deg,
-    rgba(90, 69, 252, 1) 0%,
-    rgba(116, 29, 253, 1) 50%,
-    rgba(131, 58, 180, 1) 100%
-  );
-}
 
 .parent:hover .door-left {
   transform: translateX(-100%);

@@ -29,9 +29,9 @@ const DoorEffect = () => {
       <div className="text-purple-400"><FaCloudUploadAlt size={70} /></div>
       <p className="font-semibold">Drop Here</p>
     </div>
-    <div className={`door absolute top-0 left-0 w-1/2 h-full bg-black ${flag && 'door-left'} transition duration-[1s]`} >  <span className="text-white text-center"></span>
+    <div className="door absolute top-0 left-0 w-1/2 h-full bg-black door-left" >  <span className="text-white text-center"></span>
 </div>
-    <div className={`door absolute top-0 right-0 w-1/2 h-full bg-black ${flag && 'door-right'} transition duration-[1s]`}></div>
+    <div className="door absolute top-0 right-0 w-1/2 h-full bg-black door-right"></div>
   </div>
 </div>
   );
